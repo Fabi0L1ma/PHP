@@ -1,11 +1,19 @@
 <?php 
-  session_start();
+  require_once("validador_acesso.php");
+?>
+
+<?php 
+
+  $chamados = array();
   
-  if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM'){
-    header('Location: index.php?login=erro3');
+  $arquivo = fopen('arquivo.txt', 'r'); // ABRE O ARQUIVO PARA LER
+
+  while(!feof($arquivo)){ // TESTA O FIM DO ARQUIVO
+    $resgistro = fgets($arquivo); // RECUPERA A LINHA
+    $chamados[] = $resgistro;
   }
   
-  echo $_SESSION['autenticado'];
+  fclose($arquivo);
 
 ?>
 
@@ -32,6 +40,12 @@
         <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         App Help Desk
       </a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="logoff.php">SAIR</a>
+
+        </li>
+      </ul>
     </nav>
 
     <div class="container">    
@@ -44,28 +58,39 @@
             </div>
             
             <div class="card-body">
+
+            <!---COLOCA AS INFORMAÇOES DENTRO DOS CARDS-->
+
+            <? foreach($chamados as $chamada) {?> 
+
+              <?php 
+                $chamado_dados = explode('#', $chamada); // RETORNA UM ARRAY 
+
+                if($_SESSION['perfil_id'] == 2){
+                  if($_SESSION['id'] != $chamado_dados[0]){
+                    continue;
+                  }
+                }
+                
+                if(count($chamado_dados) < 3){ // CONTROLA AS 3 CATEGORIAS QUE DEVEM APARECER (TITULO, CATEGORIA, DESCRIÇÃO)
+                  continue;
+                }
+              ?>
               
               <div class="card mb-3 bg-light">
                 <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
+                  <h5 class="card-title"><?= $chamado_dados[1]?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?= $chamado_dados[2]?></h6>
+                  <p class="card-text"><?= $chamado_dados[3]?></p>
 
                 </div>
               </div>
 
-              <div class="card mb-3 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
-
-                </div>
-              </div>
+            <? } ?>
 
               <div class="row mt-5">
                 <div class="col-6">
-                  <button class="btn btn-lg btn-warning btn-block" type="submit">Voltar</button>
+                  <a class="btn btn-lg btn-warning btn-block" href="home.php">Voltar</a>
                 </div>
               </div>
             </div>

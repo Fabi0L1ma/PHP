@@ -32,27 +32,32 @@
               Login
             </div>
             <div class="card-body">
-
-              <form action="valida_login.php" method="post"> <!-- MANDA O FORMULARIO PARA O LADO SERVIDOR (ACTION = DESTINO) / obs: METODO POST ESCONDE OS DADOS DA URL -->
+              <form action="valida_login.php" method="POST">
                 <div class="form-group">
                   <input name="email" type="email" class="form-control" placeholder="E-mail">
                 </div>
                 <div class="form-group">
                   <input name="senha" type="password" class="form-control" placeholder="Senha">
                 </div>
-
-                <!-- METODO (ISSERT) VERIFICA SE SE CAMPO REQUERIDO EXISTE --> 
-                <?php  if(isset($_GET['login']) && $_GET['login'] == 'erro') { ?>
-
-                  <div class="text-danger">
-                    Usuario ou Senha Invalida
+                
+                <!---isset() = VERIFICA SE O INDEX DO ARRAY EXISTE--->
+                  
+                <? if(isset($_GET['login']) and $_GET['login'] == 'erro'){?>
+                  <div class=text-danger">
+                    Usuário ou senha invalido(s)
                   </div>
 
-                <?php } ?>
+                <? }?>
+
+                <? if(isset($_GET['login']) and $_GET['login'] == 'erro2'){?>
+                  <div class=text-danger">
+                    Faça login antes de acessar as páginas protegidas
+                  </div>
+
+                <? }?>
 
                 <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
               </form>
-
             </div>
           </div>
         </div>
