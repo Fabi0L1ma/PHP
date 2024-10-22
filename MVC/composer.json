@@ -1,0 +1,21 @@
+{
+    "name": "projeto",
+    
+    "require" : {
+        "php" : ">= 7.0"
+    },
+    
+    "authors": [
+        {
+            "name" : "Fabio Lima"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "app\\" : "app/",
+            "MF\\" : "vendor/MF/"
+        }
+    }
+
+}
