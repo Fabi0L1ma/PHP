@@ -1,0 +1,91 @@
+body {
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+    flex-direction: column;
+}
+
+.formulario {
+    width: 380px;
+    height: 420px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    gap: 20px;
+}
+
+.campos-formulario {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+input {
+    width: 340px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    outline: 0;
+}
+
+button {
+    background-color: rgb(54, 118, 229);
+    width: 360px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-weight: bolder;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.bt-paginacao
+{
+    position: relative;
+    right: 380px;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: rgb(79, 134, 229);
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.tabela {
+    width: 800px;
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+}
+
+td, tr, th {
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+}
+
+th {
+    background-color: rgb(214, 214, 214);
+}
+
+.box-buscar
+{
+    padding: 20px;
+}
+
+.input-buscar
+{
+    width: 670px;
+}
+
+.bt-buscar
+{
+    width: 100px;
+    font-size: 16px;
+    font-weight: 200;
+}
